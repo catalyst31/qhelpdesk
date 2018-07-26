@@ -37,10 +37,13 @@
 					<div class="panel-body">
 						
 					<div class="col-md-12">
-					<form method="post" action="<?php echo base_url();?><?php echo $url;?>">
+					<!-- <form method="post" action="<?php echo base_url();?><?php echo $url;?>"> -->
+					<form method="post" action="POST">
 
-					<input type="hidden" class="form-control" name="id_ticket" value="<?php echo $id_ticket;?>">
-					<input type="hidden" class="form-control" name="id_user" value="<?php echo $id_user;?>">
+					<input type="hidden" class="form-control" name="id_ticket" value="kosong">
+					<input type="hidden" class="form-control" name="id_user" value="kosong">
+					<!-- <input type="hidden" class="form-control" name="id_ticket" value="<?php echo $id_ticket;?>">
+					<input type="hidden" class="form-control" name="id_user" value="<?php echo $id_user;?>"> -->
 
 				<div class="panel panel-danger">
 					<div class="panel-heading">
@@ -52,12 +55,15 @@
 
 						<div class="form-group">
 						<label>NIK</label>
-						<input class="form-control" name="nama" placeholder="Nama" value="<?php echo $id_user;?>" disabled>
+						<input class="form-control" name="nama" placeholder="Nama" value="tes" disabled>
+						<!-- <input class="form-control" name="nama" placeholder="Nama" value="<?php echo $id_user;?>" disabled> -->
 					    </div>
 
 					    <div class="form-group">
 						<label>Department</label>
-						<input class="form-control" name="departemen" placeholder="Departemen" value="<?php echo $departemen;?>" disabled>
+						<input class="form-control" name="departemen" placeholder="Departemen" value="tes" disabled>
+
+						<!-- <input class="form-control" name="departemen" placeholder="Departemen" value="<?php echo $departemen;?>" disabled> -->
 					    </div>
 
 					     </div>
@@ -66,7 +72,9 @@
 
 					    <div class="form-group">
 						<label>Name</label>
-						<input class="form-control" name="nama" placeholder="Departemen" value="<?php echo $nama;?>" disabled>
+						<input class="form-control" name="nama" placeholder="Departemen" value="tes" disabled>
+						<!-- <input class="form-control" name="nama" placeholder="Departemen" value="<?php echo $nama;?>" disabled>
+						 -->
 					    </div>
 						
 					    <!-- <div class="form-group">
@@ -89,10 +97,10 @@
 
 						<div class="form-group">
 						<label>Category*</label>
-						<?php echo form_dropdown('id_kategori',$dd_kategori, $id_kategori, ' id="id_kategori" required class="form-control"');?>
+						<!-- <?php echo form_dropdown('id_kategori',$dd_kategori, $id_kategori, ' id="id_kategori" required class="form-control"');?> -->
 					    </div>
 
-					    <div id="div-order">
+					    <!-- <div id="div-order">
 
 						<?php if($flag=="edit")
 						{
@@ -102,7 +110,7 @@
 						}else{}
 					    ?>
 
-					    </div>
+					    </div> -->
 
 						<!-- <div class="form-group">
 						<label>Attachment</label>
@@ -129,12 +137,20 @@
 
 					    <div class="form-group">
 						<label>Subject*</label>
-						<input class="form-control" name="problem_summary" placeholder="" value="<?php echo $problem_summary;?>" required>
+
+						<!-- <input class="form-control" name="problem_summary" placeholder="" value="<?php echo $problem_summary;?>" required> -->
+
+						<input class="form-control" name="problem_summary" placeholder="" value=" " required>
 					    </div>
 
 					    <div class="form-group">
 						<label>Description</label>
-						<textarea name="problem_detail" required class="form-control" rows="10"><?php echo $problem_detail;?></textarea>
+<!-- 						
+						<textarea name="problem_detail" required class="form-control" rows="10"><?php echo $problem_detail;?></textarea> -->
+						
+						<textarea name="problem_detail" required class="form-control" rows="10"></textarea>
+
+
 					    </div>
 
 					    

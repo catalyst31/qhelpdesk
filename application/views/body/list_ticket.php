@@ -13,7 +13,7 @@
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg>
-<!-- <a href="#" style="text-decoration:none">List Ticket  <a href="<?php echo base_url();?>list_ticket/pdflistticket" class="btn btn-danger" target="_blank">Export Pdf</a> </a></div> -->
+<a href="#" style="text-decoration:none">List Ticket</a></div>
 					<div class="panel-body">
 						<table data-toggle="table" data-show-refresh="false" data-show-toggle="true" data-show-columns="true" data-search="true"  data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						    <thead>
@@ -48,6 +48,7 @@
 						        <td data-field="id"><?php echo $row->nama_kategori;?></td>
 						        <td data-field="id"><?php echo $row->nama_sub_kategori;?></td>
 						        <td data-field="id">
+						        
 						        </td>
 						    </tr>
 						    <?php endforeach;?>
