@@ -12,17 +12,17 @@ class Login extends CI_Controller {
     
 function index()
     {
-        $data = "";
-
-        $this->load->view('login', $data);
+		$data = "";
+		
+		$this->load->view('login', $data);
+		
     }
 
 
   function login_akses()
   {
-
-  	$username = trim($this->input->post('username'));
-  	$password = md5(trim($this->input->post('password')));
+	$username = trim($this->input->post('username'));
+	$password = md5(trim($this->input->post('password')));
   	
 	$akses = $this->db->query("select A.username, B.nama, A.level, B.id_jabatan, C.id_dept FROM user A 
 		LEFT JOIN karyawan B ON B.nik = A.username
@@ -40,7 +40,6 @@ function index()
 	$session['level'] = $data['level'];
 	$session['id_jabatan'] = $data['id_jabatan'];
 	$session['id_dept'] = $data['id_dept'];
-	
 	$this->session->set_userdata($session);
     redirect('list_ticket/ticket_list');
 	}

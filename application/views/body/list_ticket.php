@@ -13,7 +13,7 @@
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg>
-<a href="#" style="text-decoration:none">List Ticket  <a href="<?php echo base_url();?>list_ticket/pdflistticket" class="btn btn-danger" target="_blank">Export Pdf</a> </a></div>
+<!-- <a href="#" style="text-decoration:none">List Ticket  <a href="<?php echo base_url();?>list_ticket/pdflistticket" class="btn btn-danger" target="_blank">Export Pdf</a> </a></div> -->
 					<div class="panel-body">
 						<table data-toggle="table" data-show-refresh="false" data-show-toggle="true" data-show-columns="true" data-search="true"  data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						    <thead>
@@ -24,12 +24,12 @@
 						        <th data-field="idddXs" data-sortable="true">Dept</th>
 						        <th data-field="iddd" data-sortable="true">Date</th>
 						        <th data-field="idddd" data-sortable="true">Category</th>
-						        <th data-field="iddddd" data-sortable="true">Sub Category</th>
+						        <th data-field="iddddd" data-sortable="true">Subject</th>
 						        <th data-field="idddddd" data-sortable="true">Status</th>
 						    </tr>
                             </thead>
                             <tbody>
-                           <?php $no = 0; foreach($datalist_ticket as $row) : $no++;?>
+                           <!-- <?php $no = 0; foreach($datalist_ticket as $row) : $no++;?> -->
 						     <tr>
 						        <td data-field="no" width="10px"><?php echo $no;?></td>
 						        <td data-field="id">
@@ -48,14 +48,6 @@
 						        <td data-field="id"><?php echo $row->nama_kategori;?></td>
 						        <td data-field="id"><?php echo $row->nama_sub_kategori;?></td>
 						        <td data-field="id">
-						        <?php 
-						        if($row->status==2) { echo "APPROVAL INTERNAL";}
-						        else if($row->status==3) { echo "WAITING APPROVAL TECHNICIAN";}
-						        else if($row->status==4) { echo "PROCESS TECHNICIAN";}
-						        else if($row->status==5) { echo "PENDING TECHNICIAN";}
-						        else if($row->status==6) { echo "SOLVED";}
-
-						        ?>
 						        </td>
 						    </tr>
 						    <?php endforeach;?>

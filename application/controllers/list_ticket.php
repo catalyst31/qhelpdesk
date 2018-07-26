@@ -7,19 +7,12 @@ function __construct(){
         parent::__construct();
         $this->load->model('model_app');
 
-
-        if(!$this->session->userdata('id_user'))
-       {
-        $this->session->set_flashdata("msg", "<div class='alert alert-info'>
-       <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-       <strong><span class='glyphicon glyphicon-remove-sign'></span></strong> Silahkan login terlebih dahulu.
-       </div>");
-        redirect('login');
-        }
     }
 
 
- function ticket_list()
+
+
+ function index()
  {
 
  	    $data['header'] = "header/header";
@@ -27,34 +20,34 @@ function __construct(){
         $data['sidebar'] = "sidebar/sidebar";
         $data['body'] = "body/list_ticket";
 
-        $id_dept = trim($this->session->userdata('id_dept'));
-        $id_user = trim($this->session->userdata('id_user'));
+        // $id_dept = trim($this->session->userdata('1'));
+        // $id_user = trim($this->session->userdata('K0001'));
 
-        //notification 
+        // //notification 
 
-        $sql_listticket = "SELECT COUNT(id_ticket) AS jml_list_ticket FROM ticket WHERE status = 2";
-        $row_listticket = $this->db->query($sql_listticket)->row();
+        // $sql_listticket = "SELECT COUNT(id_ticket) AS jml_list_ticket FROM ticket WHERE status = 2";
+        // $row_listticket = $this->db->query($sql_listticket)->row();
 
-        $data['notif_list_ticket'] = $row_listticket->jml_list_ticket;
+        // $data['notif_list_ticket'] = $row_listticket->jml_list_ticket;
 
-        $sql_approvalticket = "SELECT COUNT(A.id_ticket) AS jml_approval_ticket FROM ticket A 
-        LEFT JOIN sub_kategori B ON B.id_sub_kategori = A.id_sub_kategori 
-        LEFT JOIN kategori C ON C.id_kategori = B.id_kategori
-        LEFT JOIN karyawan D ON D.nik = A.reported 
-        LEFT JOIN bagian_departemen E ON E.id_bagian_dept = D.id_bagian_dept WHERE E.id_dept = $id_dept AND status = 1";
-        $row_approvalticket = $this->db->query($sql_approvalticket)->row();
+        // $sql_approvalticket = "SELECT COUNT(A.id_ticket) AS jml_approval_ticket FROM ticket A 
+        // LEFT JOIN sub_kategori B ON B.id_sub_kategori = A.id_sub_kategori 
+        // LEFT JOIN kategori C ON C.id_kategori = B.id_kategori
+        // LEFT JOIN karyawan D ON D.nik = A.reported 
+        // LEFT JOIN bagian_departemen E ON E.id_bagian_dept = D.id_bagian_dept WHERE E.id_dept = $id_dept AND status = 1";
+        // $row_approvalticket = $this->db->query($sql_approvalticket)->row();
 
-        $data['notif_approval'] = $row_approvalticket->jml_approval_ticket;
+        // $data['notif_approval'] = $row_approvalticket->jml_approval_ticket;
 
-        $sql_assignmentticket = "SELECT COUNT(id_ticket) AS jml_assignment_ticket FROM ticket WHERE status = 3 AND id_teknisi='$id_user'";
-        $row_assignmentticket = $this->db->query($sql_assignmentticket)->row();
+        // $sql_assignmentticket = "SELECT COUNT(id_ticket) AS jml_assignment_ticket FROM ticket WHERE status = 3 AND id_teknisi='$id_user'";
+        // $row_assignmentticket = $this->db->query($sql_assignmentticket)->row();
 
-        $data['notif_assignment'] = $row_assignmentticket->jml_assignment_ticket;
+        // $data['notif_assignment'] = $row_assignmentticket->jml_assignment_ticket;
 
-        //end notification
+        // //end notification
 
-        $datalist_ticket = $this->model_app->datalist_ticket();
-	    $data['datalist_ticket'] = $datalist_ticket;
+        // $datalist_ticket = $this->model_app->datalist_ticket();
+	    // $data['datalist_ticket'] = $datalist_ticket;
         
         $this->load->view('template', $data);
  }
@@ -67,53 +60,53 @@ function __construct(){
         $data['sidebar'] = "sidebar/sidebar2";
         $data['body'] = "body/pilih_teknisi";
 
-        $id_dept = trim($this->session->userdata('id_dept'));
-        $id_user = trim($this->session->userdata('id_user'));
+        // $id_dept = trim($this->session->userdata('id_dept'));
+        // $id_user = trim($this->session->userdata('id_user'));
 
-        //notification 
+        // //notification 
 
-        $sql_listticket = "SELECT COUNT(id_ticket) AS jml_list_ticket FROM ticket WHERE status = 2";
-        $row_listticket = $this->db->query($sql_listticket)->row();
+        // $sql_listticket = "SELECT COUNT(id_ticket) AS jml_list_ticket FROM ticket WHERE status = 2";
+        // $row_listticket = $this->db->query($sql_listticket)->row();
 
-        $data['notif_list_ticket'] = $row_listticket->jml_list_ticket;
+        // $data['notif_list_ticket'] = $row_listticket->jml_list_ticket;
 
-        $sql_approvalticket = "SELECT COUNT(A.id_ticket) AS jml_approval_ticket FROM ticket A 
-        LEFT JOIN sub_kategori B ON B.id_sub_kategori = A.id_sub_kategori 
-        LEFT JOIN kategori C ON C.id_kategori = B.id_kategori
-        LEFT JOIN karyawan D ON D.nik = A.reported 
-        LEFT JOIN bagian_departemen E ON E.id_bagian_dept = D.id_bagian_dept WHERE E.id_dept = $id_dept AND status = 1";
-        $row_approvalticket = $this->db->query($sql_approvalticket)->row();
+        // $sql_approvalticket = "SELECT COUNT(A.id_ticket) AS jml_approval_ticket FROM ticket A 
+        // LEFT JOIN sub_kategori B ON B.id_sub_kategori = A.id_sub_kategori 
+        // LEFT JOIN kategori C ON C.id_kategori = B.id_kategori
+        // LEFT JOIN karyawan D ON D.nik = A.reported 
+        // LEFT JOIN bagian_departemen E ON E.id_bagian_dept = D.id_bagian_dept WHERE E.id_dept = $id_dept AND status = 1";
+        // $row_approvalticket = $this->db->query($sql_approvalticket)->row();
 
-        $data['notif_approval'] = $row_approvalticket->jml_approval_ticket;
+        // $data['notif_approval'] = $row_approvalticket->jml_approval_ticket;
 
-        $sql_assignmentticket = "SELECT COUNT(id_ticket) AS jml_assignment_ticket FROM ticket WHERE status = 3 AND id_teknisi='$id_user'";
-        $row_assignmentticket = $this->db->query($sql_assignmentticket)->row();
+        // $sql_assignmentticket = "SELECT COUNT(id_ticket) AS jml_assignment_ticket FROM ticket WHERE status = 3 AND id_teknisi='$id_user'";
+        // $row_assignmentticket = $this->db->query($sql_assignmentticket)->row();
 
-        $data['notif_assignment'] = $row_assignmentticket->jml_assignment_ticket;
+        // $data['notif_assignment'] = $row_assignmentticket->jml_assignment_ticket;
 
-        //end notification
+        // //end notification
 
-        $sql = "SELECT A.status, D.nama, C.id_kategori, A.id_ticket, A.tanggal, B.nama_sub_kategori, C.nama_kategori
-                FROM ticket A 
-                LEFT JOIN sub_kategori B ON B.id_sub_kategori = A.id_sub_kategori
-                LEFT JOIN kategori C ON C.id_kategori = B.id_kategori 
-                LEFT JOIN karyawan D ON D.nik = A.reported 
-                WHERE A.id_ticket = '$id'";
+        // $sql = "SELECT A.status, D.nama, C.id_kategori, A.id_ticket, A.tanggal, B.nama_sub_kategori, C.nama_kategori
+        //         FROM ticket A 
+        //         LEFT JOIN sub_kategori B ON B.id_sub_kategori = A.id_sub_kategori
+        //         LEFT JOIN kategori C ON C.id_kategori = B.id_kategori 
+        //         LEFT JOIN karyawan D ON D.nik = A.reported 
+        //         WHERE A.id_ticket = '$id'";
 
-        $row = $this->db->query($sql)->row();
+        // $row = $this->db->query($sql)->row();
 
-        $id_kategori = $row->id_kategori;
+        // $id_kategori = $row->id_kategori;
 
-        $data['url'] = "list_ticket/assignment"; 
+        // $data['url'] = "list_ticket/assignment"; 
 
-        $data['dd_teknisi'] = $this->model_app->dropdown_teknisi($id_kategori);
-        $data['id_teknisi'] = "";
+        // $data['dd_teknisi'] = $this->model_app->dropdown_teknisi($id_kategori);
+        // $data['id_teknisi'] = "";
             
-        $data['id_ticket'] = $id;       
-        $data['tanggal'] = $row->tanggal;
-        $data['nama_sub_kategori'] = $row->nama_sub_kategori;
-        $data['nama_kategori'] = $row->nama_kategori;
-        $data['reported'] = $row->nama;
+        // $data['id_ticket'] = $id;       
+        // $data['tanggal'] = $row->tanggal;
+        // $data['nama_sub_kategori'] = $row->nama_sub_kategori;
+        // $data['nama_kategori'] = $row->nama_kategori;
+        // $data['reported'] = $row->nama;
         
         $this->load->view('template', $data);
 
