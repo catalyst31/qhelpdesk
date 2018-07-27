@@ -18,12 +18,14 @@
 
 <div class="list-group">
 <a href="#" class="list-group-item active">
-<?php echo $id_ticket;?>
+<!-- <?php echo $id_ticket;?> -->
+<?php echo "Tiket No";?>
 </a>
-<a href="#" class="list-group-item"><span class="glyphicon glyphicon-calendar"></span> &nbsp;<?php echo $tanggal;?></a>
-<a href="#" class="list-group-item"><span class="glyphicon glyphicon-briefcase"></span> &nbsp;<?php echo $nama_kategori;?></a>
-<a href="#" class="list-group-item"><span class="glyphicon glyphicon-briefcase"></span> &nbsp;<?php echo $nama_sub_kategori;?></a>
-<a href="#" class="list-group-item"><span class="glyphicon glyphicon-user"></span> &nbsp;<?php echo $reported;?></a>
+<!-- TODO : Change to $ variable -->
+<a href="#" class="list-group-item"><span class="glyphicon glyphicon-calendar"></span> &nbsp;<?php echo "tanggal";?></a>
+<a href="#" class="list-group-item"><span class="glyphicon glyphicon-briefcase"></span> &nbsp;<?php echo "nama_kategori";?></a>
+<a href="#" class="list-group-item"><span class="glyphicon glyphicon-briefcase"></span> &nbsp;<?php echo "nama_sub_kategori";?></a>
+<a href="#" class="list-group-item"><span class="glyphicon glyphicon-user"></span> &nbsp;<?php echo "reported";?></a>
 </div>
 
 
@@ -87,7 +89,7 @@ PROCESS DATE: <?php echo $tanggal_proses;?>
   	<th>BY</th>
   </tr>
 
-  <?php $no = 0; foreach($data_trackingticket as $row) : $no++;?>
+  <!-- <?php $no = 0; foreach($data_trackingticket as $row) : $no++;?> -->
    <tr>
    	<td><?php echo $no;?></td>
   	<td><?php echo $row->tanggal;?></td>

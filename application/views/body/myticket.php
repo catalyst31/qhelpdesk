@@ -30,7 +30,7 @@
 						    </tr>
                             </thead>
                             <tbody>
-                           <?php $no = 0; foreach($datamyticket as $row) : $no++;?>
+                           <!-- <?php $no = 0; foreach($datamyticket as $row) : $no++;?> -->
 						     <tr>
 						        <td data-field="no" width="10px"><?php echo $no;?></td>
 						        <td data-field="id"><a href="<?php echo base_url();?>myticket/myticket_detail/<?php echo $row->id_ticket;?>"><?php echo $row->id_ticket;?></a></td>

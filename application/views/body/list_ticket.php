@@ -20,10 +20,9 @@
 						    <tr>
 						        <th data-field="no" data-sortable="true" width="10px"> No</th>
 						        <th data-field="idd3" data-sortable="true">Problem No.</th>
+								<th data-field="iddd" data-sortable="true">Date</th>
 						        <th data-field="iddds" data-sortable="true">Reported</th>
 						        <th data-field="idddXs" data-sortable="true">Dept</th>
-						        <th data-field="iddd" data-sortable="true">Date</th>
-						        <th data-field="idddd" data-sortable="true">Category</th>
 						        <th data-field="iddddd" data-sortable="true">Subject</th>
 						        <th data-field="idddddd" data-sortable="true">Status</th>
 						    </tr>
@@ -31,7 +30,10 @@
                             <tbody>
                            <!-- <?php $no = 0; foreach($datalist_ticket as $row) : $no++;?> -->
 						     <tr>
+							 <!-- Start No -->
 						        <td data-field="no" width="10px"><?php echo $no;?></td>
+							<!-- End No -->
+								<!-- Start Ticket Number -->
 						        <td data-field="id">
 
 						        <?php if($row->status==2)
@@ -42,11 +44,28 @@
 						        <?php }?>
 						        
 						        </td>
-						        <td data-field="iddsd"><?php echo $row->nama;?></td>
-						        <td data-field="iddsd"><?php echo $row->nama_dept;?></td>
-						        <td data-field="id"><?php echo $row->tanggal;?></td>
-						        <td data-field="id"><?php echo $row->nama_kategori;?></td>
-						        <td data-field="id"><?php echo $row->nama_sub_kategori;?></td>
+								<!-- End Ticket Number -->
+
+								<!-- Start Date-->
+								<td data-field="id"><?php echo $row->tanggal;?></td>
+								<!-- End Date-->
+
+								<!-- Start Reported By-->
+								<td data-field="iddsd"><?php echo $row->nama;?></td>
+								<!-- End Reported By-->
+
+								<!-- Start Dept-->
+								<td data-field="iddsd"><?php echo $row->nama_dept;?></td>
+								<!-- End Dept-->
+
+								<!-- Start Subject-->
+								<td data-field="id"><?php echo $row->nama_kategori;?></td>
+								<!-- End Subject-->
+
+								<!-- Start Status-->
+								<td data-field="id"><?php echo $row->nama_sub_kategori;?></td>
+								<!-- End Status-->
+						        
 						        <td data-field="id">
 						        
 						        </td>

@@ -54,7 +54,6 @@
 
 <li class="active"><a href="<?php echo base_url();?>ticket/add"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg> New Ticket</a></li>
 <li><a href="<?php echo base_url();?>myticket/myticket_list"><svg class="glyph stroked open letter"><use xlink:href="#stroked-open-letter"/></svg> My Ticket</a></li>
-<li><a href="<?php echo base_url();?>approval/approval_list"><svg class="glyph stroked email"><use xlink:href="#stroked-email"/></svg><use xlink:href="#stroked-male-user"></use></svg> Aprroval Ticket</a></li>
 
 </ul>
 
