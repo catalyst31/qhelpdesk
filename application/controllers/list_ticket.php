@@ -19,7 +19,7 @@ function __construct(){
         $data['navbar'] = "navbar/navbar";
         $data['sidebar'] = "sidebar/sidebar";
         $data['body'] = "body/list_ticket";
-
+        $this->session->set_userdata('nama', 'Adam Cholid Agustaf');
         // $id_dept = trim($this->session->userdata('1'));
         // $id_user = trim($this->session->userdata('K0001'));
 

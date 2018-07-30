@@ -1,7 +1,7 @@
 <div class="row">
 <ol class="breadcrumb">
 <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-<li class="active">Progress Teknisi</li>
+<li class="active">Detail Ticket</li>
 </ol>
 </div><!--/.row-->
 
@@ -13,7 +13,7 @@
 <div class="col-lg-12">
 <div class="panel panel-default">
 <div class="panel-heading"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg>
-<a href="<?php echo base_url();?>list_ticket/ticket_list" style="text-decoration:none">PROGRESS TECHNICIAN</a></div>
+<a href="<?php echo base_url();?>list_ticket/ticket_list" style="text-decoration:none">DETAIL TICKET</a></div>
 <div class="panel-body">
 
 <div class="list-group">
