@@ -55,15 +55,22 @@
 
 						<div class="form-group">
 						<label>NIK</label>
-						<input class="form-control" name="nama" placeholder="Nama" value="tes" disabled>
-						<!-- <input class="form-control" name="nama" placeholder="Nama" value="<?php echo $id_user;?>" disabled> -->
+						<!-- <input class="form-control" name="nama" placeholder="Nama" value="tes" disabled> -->
+						<input class="form-control" name="nama" placeholder="Nama" value="<?php echo $this->session->userdata('id_user');?>" disabled>
 					    </div>
 
 					    <div class="form-group">
 						<label>Department</label>
-						<input class="form-control" name="departemen" placeholder="Departemen" value="tes" disabled>
+						<!-- <input class="form-control" name="departemen" placeholder="Departemen" value="tes" disabled> -->
 
-						<!-- <input class="form-control" name="departemen" placeholder="Departemen" value="<?php echo $departemen;?>" disabled> -->
+						<input class="form-control" name="departemen" placeholder="" value="<?php 
+						        if($this->session->userdata('id_position')==4290) { echo "IT";}
+						        else if($row->status==3) { echo "WAITING APPROVAL TECHNICIAN";}
+						        else if($row->status==4) { echo "PROCESS TECHNICIAN";}
+						        else if($row->status==5) { echo "PENDING TECHNICIAN";}
+						        else if($row->status==6) { echo "SOLVED";}
+						        ?>
+						" disabled>
 					    </div>
 
 					     </div>
@@ -72,9 +79,9 @@
 
 					    <div class="form-group">
 						<label>Name</label>
-						<input class="form-control" name="nama" placeholder="Departemen" value="tes" disabled>
-						<!-- <input class="form-control" name="nama" placeholder="Departemen" value="<?php echo $nama;?>" disabled>
-						 -->
+						<!-- <input class="form-control" name="nama" placeholder="Departemen" value="tes" disabled> -->
+						<input class="form-control" name="nama" placeholder="Departemen" value="<?php echo $this->session->userdata('nama');?>" disabled>
+						
 					    </div>
 						
 					    <!-- <div class="form-group">

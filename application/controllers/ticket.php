@@ -32,7 +32,8 @@ function __construct(){
         $data['body'] = "body/form_ticket";
 
         // $id_dept = trim($this->session->userdata('id_dept'));
-        // $id_user = trim($this->session->userdata('id_user'));
+		 $id_user = trim($this->session->userdata('id_user'));
+		 $nama = trim($this->session->userdata('nama'));
 
         // //notification 
 

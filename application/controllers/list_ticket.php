@@ -20,6 +20,33 @@ function __construct(){
         $data['sidebar'] = "sidebar/sidebar";
         $data['body'] = "body/list_ticket";
         $this->session->set_userdata('nama', 'Adam Cholid Agustaf');
+
+        $akses = $this->db->query("select A.name, A.id, A.id_position from qu_m_employ A  WHERE id='201801848'");
+
+        if($akses->num_rows() == 1)
+        {
+        
+        foreach($akses->result_array() as $data1)
+        {
+    
+        $session['id_user'] = $data1['id'];
+        $session['nama'] = $data1['name'];
+        $session['id_position'] = $data1['id_position'];
+        // $session['level'] = $data['level'];
+        // $session['id_jabatan'] = $data['id_jabatan'];
+        // $session['id_dept'] = $data['id_dept'];
+        $this->session->set_userdata($session);
+        }
+        
+        }
+        else
+        {
+        $this->session->set_flashdata("msg", "<div class='alert bg-danger' role='alert'>
+                    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                    <svg class='glyph stroked empty-message'><use xlink:href='#stroked-empty-message'></use></svg> username / Password salah.
+                    </div>");
+        redirect('login');
+        }
         // $id_dept = trim($this->session->userdata('1'));
         // $id_user = trim($this->session->userdata('K0001'));
 
