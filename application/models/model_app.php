@@ -245,24 +245,24 @@ class Model_app extends CI_Model{
 
     public function dropdown_departemen()
     {
-        $sql = "SELECT * FROM Departemen ORDER BY nama_dept";
+        $sql = "SELECT * FROM qu_m_employ_division ORDER BY name";
             $query = $this->db->query($sql);
             
             $value[''] = '-- PILIH --';
             foreach ($query->result() as $row){
-                $value[$row->id_dept] = $row->nama_dept;
+                $value[$row->id] = $row->name;
             }
             return $value;
     }
 
     public function dropdown_kategori()
     {
-        $sql = "SELECT * FROM kategori ORDER BY nama_kategori";
+        $sql = "SELECT * FROM qu_m_employ_division ORDER BY NAME";
         $query = $this->db->query($sql);
             
             $value[''] = '-- PILIH --';
             foreach ($query->result() as $row){
-                $value[$row->id_kategori] = $row->nama_kategori;
+                $value[$row->id] = $row->name;
             }
             return $value;
     }

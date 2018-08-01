@@ -76,8 +76,8 @@ function __construct(){
         // $data['departemen'] = $row->nama_dept;
         // $data['bagian_departemen'] = $row->nama_bagian_dept;		
 		
-		// $data['dd_kategori'] = $this->model_app->dropdown_kategori();
-		// $data['id_kategori'] = "";
+		$data['dd_kategori'] = $this->model_app->dropdown_kategori();
+		$data['id_kategori'] = "";
 
 		// $data['dd_kondisi'] = $this->model_app->dropdown_kondisi();
 		// $data['id_kondisi'] = "";

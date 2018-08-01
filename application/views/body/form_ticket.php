@@ -103,8 +103,8 @@
 						<div class="col-md-6">
 
 						<div class="form-group">
-						<label>Category*</label>
-						<!-- <?php echo form_dropdown('id_kategori',$dd_kategori, $id_kategori, ' id="id_kategori" required class="form-control"');?> -->
+						<label>To Department*</label>
+						<?php echo form_dropdown('id_kategori',$dd_kategori, $id_kategori, ' id="id_kategori" required class="form-control"');?>
 					    </div>
 
 					    <!-- <div id="div-order">

@@ -23,7 +23,6 @@ function index()
   {
 	$username = trim($this->input->post('username'));
 	$password = md5(trim($this->input->post('password')));
-  	select from an_user where id_user='201801848'
 	$akses = $this->db->query("select A.username, B.nama, A.level, B.id_jabatan, C.id_dept FROM user A 
 		LEFT JOIN karyawan B ON B.nik = A.username
         LEFT JOIN bagian_departemen C ON C.id_bagian_dept = B.id_bagian_dept

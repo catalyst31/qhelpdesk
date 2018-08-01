@@ -19,7 +19,6 @@ function __construct(){
         $data['navbar'] = "navbar/navbar";
         $data['sidebar'] = "sidebar/sidebar";
         $data['body'] = "body/list_ticket";
-        $this->session->set_userdata('nama', 'Adam Cholid Agustaf');
 
         $akses = $this->db->query("select A.name, A.id, A.id_position from qu_m_employ A  WHERE id='201801848'");
 
