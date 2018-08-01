@@ -64,7 +64,7 @@
 						<!-- <input class="form-control" name="departemen" placeholder="Departemen" value="tes" disabled> -->
 
 						<input class="form-control" name="departemen" placeholder="" value="<?php 
-						        if($this->session->userdata('id_position')==4290) { echo "IT";}
+						        if($this->session->userdata('id_position')==4290) { echo "Software Specialist";}
 						        else if($row->status==3) { echo "WAITING APPROVAL TECHNICIAN";}
 						        else if($row->status==4) { echo "PROCESS TECHNICIAN";}
 						        else if($row->status==5) { echo "PENDING TECHNICIAN";}
@@ -104,35 +104,13 @@
 
 						<div class="form-group">
 						<label>To Department*</label>
-						<?php echo form_dropdown('id_kategori',$dd_kategori, $id_kategori, ' id="id_kategori" required class="form-control"');?>
+						<?php echo form_dropdown('id',$dd_kategori, $id_kategori, ' id="id" required class="form-control"');?>
 					    </div>
 
-					    <!-- <div id="div-order">
-
-						<?php if($flag=="edit")
-						{
-
-	                     echo form_dropdown('id_sub_kategori',$dd_sub_kategori, $id_sub_kategori, 'required class="form-control"');
-
-						}else{}
-					    ?>
-
-					    </div> -->
-
-						<!-- <div class="form-group">
-						<label>Attachment</label>
-						<input type="file" class="form-control" name="file" placeholder="file" value="<?php echo $problem_summary;?>">
-					    </div> -->
-
-					    <!-- <div class="form-group">
-						<label>Urgently*</label>
-						<?php echo form_dropdown('id_kondisi',$dd_kondisi, $id_kondisi, ' id="id_kondisi" required class="form-control"');?>
-					    </div> -->
-
-						<!-- <div class="form-group">
+						<div class="form-group">
 						<label>Attachment </label>
-						<input type="file" class="form-control" name="file" placeholder="" value="<?php echo $file;?>" required>
-					    </div> -->
+						<input type="file" class="form-control" name="file" placeholder="" value="<?php $file;?>">
+					    </div>
 
 					    
 
