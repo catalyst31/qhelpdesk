@@ -35,7 +35,7 @@ function __construct(){
 		$data['id_user'] = $this->session->userdata('id_user');
 		$data['position'] = $this->session->userdata('position');
 		$data['division'] = $this->session->userdata('division');
-		$data['dd_division'] = $this->model_app->dropdown_kategori();
+		$data['dd_division'] = $this->model_app->dropdown_division();
 		$data['id_division'] = "";
 		$data['problem_summary'] = "";
 		$data['problem_detail'] = "";
@@ -50,6 +50,7 @@ function __construct(){
 
  function save()
  {
+	//main
  	$getkodeticket = $this->model_app->getkodeticket();
 	
 	$ticket = $getkodeticket;
@@ -60,8 +61,48 @@ function __construct(){
 
 	$id_division = strtoupper(trim($this->input->post('id_division')));
 	$problem_summary = strtoupper(trim($this->input->post('problem_summary')));
- 	$problem_detail = strtoupper(trim($this->input->post('problem_detail')));
- 	
+	$problem_detail = strtoupper(trim($this->input->post('problem_detail')));
+
+	//upload
+
+	$base_folder 	= FCPATH;
+	$upload_folder	= $base_folder . "upload/";
+	
+	// upload file1
+	$config["upload_path"] 		= $upload_folder;
+	$config["allowed_types"]	= "*"; // all types
+	$config["max_size"] 		= 10240; // 10MB
+
+	$filename = $config["file_name"] = "";
+
+	$this->load->library("upload", $config);
+	// important to multiple upload
+	$this->upload->initialize($config);
+
+	if(!$this->upload->do_upload("file1")){
+		$err = $this->upload->display_errors();
+		print_r($err);
+	}else{
+		$filedata = $this->upload->data();
+		$filename1 = $filedata['file_name'];
+	}
+
+	// // upload file2
+	// $config["upload_path"] 		= $upload_folder;
+	// $config["allowed_types"]	= "*"; // all types
+	// $config["max_size"] 		= 10240; // 10MB
+
+	// if(!$this->upload->do_upload("file2")){
+	// 	$err = $this->upload->display_errors();
+	// 	print_r($err);
+	// }else{
+
+	// 	$filedata = $this->upload->data();
+	// 	$filename2 = $filedata['file_name'];
+
+	// }
+
+
 	$data['id_ticket'] = $ticket;
 	$data['title'] = $problem_summary;
 	$data['id_division'] = $id_division;
@@ -70,9 +111,25 @@ function __construct(){
  	$data['description'] = $problem_detail;
  	$data['status'] = 1	;
 
- 	$this->db->trans_start();
+ 	$tracking['id_ticket'] = $ticket;
+ 	$tracking['create_date'] = $tanggal;
+ 	$tracking['comment'] = "Created Ticket";
+	$tracking['create_by'] = $id_user;
+	
+	$upload['id_ticket'] = $ticket;
+	$upload['file'] = $filename;
 
- 	$this->db->insert('hd_ticket', $data);
+
+ 	$this->db->trans_start();
+if($filename== ""){
+	$this->db->insert('hd_ticket', $data);
+	$this->db->insert('hd_ticket_comment', $tracking);
+}else{
+	$this->db->insert('hd_ticket', $data);
+	$this->db->insert('hd_ticket_comment', $tracking);
+	$this->db->insert('hd_ticket_files', $upload);
+}
+ 	
 
  	$this->db->trans_complete();
 

@@ -255,7 +255,7 @@ class Model_app extends CI_Model{
             return $value;
     }
 
-    public function dropdown_kategori()
+    public function dropdown_division()
     {
         $sql = "SELECT * FROM qu_m_employ_division ORDER BY NAME";
         $query = $this->db->query($sql);

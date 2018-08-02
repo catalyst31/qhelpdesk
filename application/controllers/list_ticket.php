@@ -27,7 +27,7 @@ function __construct(){
                                     FROM qu_m_employ A 
                                     LEFT JOIN qu_m_employ_position B ON B.id = A.id_position
                                     LEFT JOIN qu_m_employ_division C ON C.id = B.id_division   
-                                    WHERE A.id='201801850'");
+                                    WHERE A.id='201801848'");
 
         if($akses->num_rows() == 1)
         {

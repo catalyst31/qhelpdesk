@@ -17,7 +17,7 @@
 					<div class="panel-body">
 						
 					<div class="col-md-12">
-					<form method="post" action="<?php echo base_url();?><?php echo $url;?>">
+					<form method="post" action="<?php echo base_url();?><?php echo $url;?>" enctype="multipart/form-data">
 
 					<input type="hidden" class="form-control" name="id_ticket" value="kosong">
 					<input type="hidden" class="form-control" name="id_user" value="<?php echo $id_user;?>">
@@ -103,7 +103,9 @@
 
 						<div class="form-group">
 						<label>Attachment</label>
-						<input type="file" class="form-control" name="file" placeholder="" value="<?php $file;?>">
+						<input type="file" class="form-control" name="file1" placeholder="">
+						<br>
+						<!-- <input type="file" class="form-control" name="file2" placeholder=""> -->
 					    </div>
 
 					    
