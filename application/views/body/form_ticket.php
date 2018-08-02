@@ -1,24 +1,4 @@
-<script language="javascript" type="text/javascript">
-    
-	$(document).ready(function() {
 
-		$("#id_kategori").change(function(){
-	 		// Put an animated GIF image insight of content
-		
-			var data = {id_kategori:$("#id_kategori").val()};
-			$.ajax({
-					type: "POST",
-					url : "<?php echo base_url().'select/select_sub_kategori'?>",				
-					data: data,
-					success: function(msg){
-						$('#div-order').html(msg);
-					}
-			});
-		});   
-
-	});
-
-</script>			
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
@@ -41,7 +21,7 @@
 					<form method="post" action="POST">
 
 					<input type="hidden" class="form-control" name="id_ticket" value="kosong">
-					<input type="hidden" class="form-control" name="id_user" value="kosong">
+					<input type="hidden" class="form-control" name="id_user" value="<?php echo $id_user;?>">
 					<!-- <input type="hidden" class="form-control" name="id_ticket" value="<?php echo $id_ticket;?>">
 					<input type="hidden" class="form-control" name="id_user" value="<?php echo $id_user;?>"> -->
 
@@ -56,21 +36,14 @@
 						<div class="form-group">
 						<label>NIK</label>
 						<!-- <input class="form-control" name="nama" placeholder="Nama" value="tes" disabled> -->
-						<input class="form-control" name="nama" placeholder="Nama" value="<?php echo $this->session->userdata('id_user');?>" disabled>
+						<input class="form-control" name="nama" placeholder="Nama" value="<?php echo $id_user;?>" disabled>
 					    </div>
 
 					    <div class="form-group">
-						<label>Department</label>
+						<label>Position</label>
 						<!-- <input class="form-control" name="departemen" placeholder="Departemen" value="tes" disabled> -->
 
-						<input class="form-control" name="departemen" placeholder="" value="<?php 
-						        if($this->session->userdata('id_position')==4290) { echo "Software Specialist";}
-						        else if($row->status==3) { echo "WAITING APPROVAL TECHNICIAN";}
-						        else if($row->status==4) { echo "PROCESS TECHNICIAN";}
-						        else if($row->status==5) { echo "PENDING TECHNICIAN";}
-						        else if($row->status==6) { echo "SOLVED";}
-						        ?>
-						" disabled>
+						<input class="form-control" name="departemen" placeholder="" value="<?php echo $title ?>" disabled>
 					    </div>
 
 					     </div>
@@ -80,14 +53,14 @@
 					    <div class="form-group">
 						<label>Name</label>
 						<!-- <input class="form-control" name="nama" placeholder="Departemen" value="tes" disabled> -->
-						<input class="form-control" name="nama" placeholder="Departemen" value="<?php echo $this->session->userdata('nama');?>" disabled>
+						<input class="form-control" name="nama" placeholder="Departemen" value="<?php echo $name;?>" disabled>
 						
 					    </div>
 						
-					    <!-- <div class="form-group">
-						<label>Sub Departement</label>
-						<input class="form-control" name="departemen" placeholder="Departemen" value="<?php echo $bagian_departemen;?>" disabled>
-					    </div> -->
+					    <div class="form-group">
+						<label>Departement</label>
+						<input class="form-control" name="departemen" placeholder="Departemen" value="<?php echo $division ?>" disabled>
+					    </div>
 
 					    </div>
 						
@@ -107,12 +80,6 @@
 						<?php echo form_dropdown('id',$dd_kategori, $id_kategori, ' id="id" required class="form-control"');?>
 					    </div>
 
-						<div class="form-group">
-						<label>Attachment </label>
-						<input type="file" class="form-control" name="file" placeholder="" value="<?php $file;?>">
-					    </div>
-
-					    
 
 				        </div>
 
@@ -123,19 +90,24 @@
 					    <div class="form-group">
 						<label>Subject*</label>
 
-						<!-- <input class="form-control" name="problem_summary" placeholder="" value="<?php echo $problem_summary;?>" required> -->
+						<input class="form-control" name="problem_summary" placeholder="" value="<?php echo $problem_summary;?>" required>
 
-						<input class="form-control" name="problem_summary" placeholder="" value=" " required>
+						<!-- <input class="form-control" name="problem_summary" placeholder="" value=" " required> -->
 					    </div>
 
 					    <div class="form-group">
 						<label>Description</label>
-<!-- 						
-						<textarea name="problem_detail" required class="form-control" rows="10"><?php echo $problem_detail;?></textarea> -->
+						
+						<textarea name="problem_detail" required class="form-control" rows="10"><?php echo $problem_detail;?></textarea>
 						
 						<textarea name="problem_detail" required class="form-control" rows="10"></textarea>
 
 
+					    </div>
+
+						<div class="form-group">
+						<label>Attachment</label>
+						<input type="file" class="form-control" name="file" placeholder="" value="<?php $file;?>">
 					    </div>
 
 					    
@@ -151,7 +123,7 @@
 		
 
 					<button type="submit" class="btn btn-primary">Simpan</button>
-					<a href="<?php echo base_url();?>home"  class="btn btn-default">Batal</a>
+					<a href="<?php echo base_url();?>"  class="btn btn-default">Batal</a>
 				    </div>
 
 				     </form>

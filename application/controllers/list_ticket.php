@@ -20,7 +20,11 @@ function __construct(){
         $data['sidebar'] = "sidebar/sidebar";
         $data['body'] = "body/list_ticket";
 
-        $akses = $this->db->query("select A.name, A.id, A.id_position from qu_m_employ A  WHERE id='201801848'");
+        $akses = $this->db->query("SELECT A.name, A.id, A.id_position, A.title, C.name AS 'name_division' 
+                                    FROM qu_m_employ A 
+                                    LEFT JOIN qu_m_employ_position B ON B.id = A.id_position
+                                    LEFT JOIN qu_m_employ_division C ON C.id = B.id_division   
+                                    WHERE A.id='201801848'");
 
         if($akses->num_rows() == 1)
         {
@@ -30,8 +34,11 @@ function __construct(){
     
         $session['id_user'] = $data1['id'];
         $session['nama'] = $data1['name'];
+        $session['division'] = $data1['name_division'];
         $session['id_position'] = $data1['id_position'];
-        // $session['level'] = $data['level'];
+        $session['title1'] = $data1['title'];
+
+        // $session['level'] = $data['level']; 
         // $session['id_jabatan'] = $data['id_jabatan'];
         // $session['id_dept'] = $data['id_dept'];
         $this->session->set_userdata($session);

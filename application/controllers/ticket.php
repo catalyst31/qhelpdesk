@@ -32,9 +32,6 @@ function __construct(){
         $data['body'] = "body/form_ticket";
 
         // $id_dept = trim($this->session->userdata('id_dept'));
-		 $id_user = trim($this->session->userdata('id_user'));
-		 $nama = trim($this->session->userdata('nama'));
-
         // //notification 
 
         // $sql_listticket = "SELECT COUNT(id_ticket) AS jml_list_ticket FROM ticket WHERE status = 2";
@@ -74,16 +71,19 @@ function __construct(){
         // $data['id_user'] = $id_user;
         // $data['nama'] = $row->nama;
         // $data['departemen'] = $row->nama_dept;
-        // $data['bagian_departemen'] = $row->nama_bagian_dept;		
-		
+		// $data['bagian_departemen'] = $row->nama_bagian_dept;
+		$data['title'] = $this->session->userdata('title1');
+		$data['division'] = $this->session->userdata('division');
+		$data['name'] = trim($this->session->userdata('nama'));		
+		$data['id_user']= trim($this->session->userdata('id_user'));
 		$data['dd_kategori'] = $this->model_app->dropdown_kategori();
 		$data['id_kategori'] = "";
 
 		// $data['dd_kondisi'] = $this->model_app->dropdown_kondisi();
 		// $data['id_kondisi'] = "";
 
-		// $data['problem_summary'] = "";
-		// $data['problem_detail'] = "";
+		$data['problem_summary'] = "";
+		$data['problem_detail'] = "";
 		// //$data['file']= "";
 
 		// $data['status'] = "";
