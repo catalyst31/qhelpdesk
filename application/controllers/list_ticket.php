@@ -20,27 +20,25 @@ function __construct(){
         $data['sidebar'] = "sidebar/sidebar";
         $data['body'] = "body/list_ticket";
 
-        $akses = $this->db->query("SELECT A.name, A.id, A.id_position, A.title, C.name AS 'name_division' 
+        $akses = $this->db->query("SELECT A.id AS 'nik',
+                                          A.name AS 'account_name', 
+                                          B.name AS 'name_position', 
+                                          C.name AS 'name_division' 
                                     FROM qu_m_employ A 
                                     LEFT JOIN qu_m_employ_position B ON B.id = A.id_position
                                     LEFT JOIN qu_m_employ_division C ON C.id = B.id_division   
-                                    WHERE A.id='201801848'");
+                                    WHERE A.id='201801850'");
 
         if($akses->num_rows() == 1)
         {
         
-        foreach($akses->result_array() as $data1)
+        foreach($akses->result_array() as $account_data)
         {
     
-        $session['id_user'] = $data1['id'];
-        $session['nama'] = $data1['name'];
-        $session['division'] = $data1['name_division'];
-        $session['id_position'] = $data1['id_position'];
-        $session['title1'] = $data1['title'];
-
-        // $session['level'] = $data['level']; 
-        // $session['id_jabatan'] = $data['id_jabatan'];
-        // $session['id_dept'] = $data['id_dept'];
+        $session['id_user'] = $account_data['nik'];
+        $session['employe_name'] = $account_data['account_name'];
+        $session['division'] = $account_data['name_division'];
+        $session['position'] = $account_data['name_position'];
         $this->session->set_userdata($session);
         }
         
@@ -49,39 +47,10 @@ function __construct(){
         {
         $this->session->set_flashdata("msg", "<div class='alert bg-danger' role='alert'>
                     <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                    <svg class='glyph stroked empty-message'><use xlink:href='#stroked-empty-message'></use></svg> username / Password salah.
+                    <svg class='glyph stroked empty-message'><use xlink:href='#stroked-empty-message'></use></svg> NIK NOT FOUND !
                     </div>");
         redirect('login');
         }
-        // $id_dept = trim($this->session->userdata('1'));
-        // $id_user = trim($this->session->userdata('K0001'));
-
-        // //notification 
-
-        // $sql_listticket = "SELECT COUNT(id_ticket) AS jml_list_ticket FROM ticket WHERE status = 2";
-        // $row_listticket = $this->db->query($sql_listticket)->row();
-
-        // $data['notif_list_ticket'] = $row_listticket->jml_list_ticket;
-
-        // $sql_approvalticket = "SELECT COUNT(A.id_ticket) AS jml_approval_ticket FROM ticket A 
-        // LEFT JOIN sub_kategori B ON B.id_sub_kategori = A.id_sub_kategori 
-        // LEFT JOIN kategori C ON C.id_kategori = B.id_kategori
-        // LEFT JOIN karyawan D ON D.nik = A.reported 
-        // LEFT JOIN bagian_departemen E ON E.id_bagian_dept = D.id_bagian_dept WHERE E.id_dept = $id_dept AND status = 1";
-        // $row_approvalticket = $this->db->query($sql_approvalticket)->row();
-
-        // $data['notif_approval'] = $row_approvalticket->jml_approval_ticket;
-
-        // $sql_assignmentticket = "SELECT COUNT(id_ticket) AS jml_assignment_ticket FROM ticket WHERE status = 3 AND id_teknisi='$id_user'";
-        // $row_assignmentticket = $this->db->query($sql_assignmentticket)->row();
-
-        // $data['notif_assignment'] = $row_assignmentticket->jml_assignment_ticket;
-
-        // //end notification
-
-        // $datalist_ticket = $this->model_app->datalist_ticket();
-	    // $data['datalist_ticket'] = $datalist_ticket;
-        
         $this->load->view('template', $data);
  }
 

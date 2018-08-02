@@ -13,12 +13,11 @@
 			<div class="col-lg-12">
 				<div class="panel panel-primary">
 					<div class="panel-heading"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg>
-<a href="#" style="text-decoration:none; font-color:white">Ticket</a></div>
+					<a href="#" style="text-decoration:none; font-color:black">Create New Ticket</a></div>
 					<div class="panel-body">
 						
 					<div class="col-md-12">
-					<!-- <form method="post" action="<?php echo base_url();?><?php echo $url;?>"> -->
-					<form method="post" action="POST">
+					<form method="post" action="<?php echo base_url();?><?php echo $url;?>">
 
 					<input type="hidden" class="form-control" name="id_ticket" value="kosong">
 					<input type="hidden" class="form-control" name="id_user" value="<?php echo $id_user;?>">
@@ -35,15 +34,14 @@
 
 						<div class="form-group">
 						<label>NIK</label>
-						<!-- <input class="form-control" name="nama" placeholder="Nama" value="tes" disabled> -->
-						<input class="form-control" name="nama" placeholder="Nama" value="<?php echo $id_user;?>" disabled>
+						
+						<input class="form-control" name="nik" placeholder="nik" value="<?php echo $id_user;?>" disabled>
 					    </div>
 
 					    <div class="form-group">
 						<label>Position</label>
-						<!-- <input class="form-control" name="departemen" placeholder="Departemen" value="tes" disabled> -->
 
-						<input class="form-control" name="departemen" placeholder="" value="<?php echo $title ?>" disabled>
+						<input class="form-control" name="position" placeholder="" value="<?php echo $position; ?>" disabled>
 					    </div>
 
 					     </div>
@@ -52,14 +50,13 @@
 
 					    <div class="form-group">
 						<label>Name</label>
-						<!-- <input class="form-control" name="nama" placeholder="Departemen" value="tes" disabled> -->
-						<input class="form-control" name="nama" placeholder="Departemen" value="<?php echo $name;?>" disabled>
+						<input class="form-control" name="name" placeholder="name" value="<?php echo $name;?>" disabled>
 						
 					    </div>
 						
 					    <div class="form-group">
-						<label>Departement</label>
-						<input class="form-control" name="departemen" placeholder="Departemen" value="<?php echo $division ?>" disabled>
+						<label>Division</label>
+						<input class="form-control" name="division" placeholder="Division" value="<?php echo $division ?>" disabled>
 					    </div>
 
 					    </div>
@@ -77,7 +74,7 @@
 
 						<div class="form-group">
 						<label>To Department*</label>
-						<?php echo form_dropdown('id',$dd_kategori, $id_kategori, ' id="id" required class="form-control"');?>
+						<?php echo form_dropdown('id_division',$dd_division, $id_division, ' id="id_division" required class="form-control"');?>
 					    </div>
 
 
@@ -100,7 +97,6 @@
 						
 						<textarea name="problem_detail" required class="form-control" rows="10"><?php echo $problem_detail;?></textarea>
 						
-						<textarea name="problem_detail" required class="form-control" rows="10"></textarea>
 
 
 					    </div>

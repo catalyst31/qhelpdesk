@@ -29,69 +29,20 @@ function __construct(){
  	    $data['header'] = "header/header";
         $data['navbar'] = "navbar/navbar";
         $data['sidebar'] = "sidebar/sidebar";
-        $data['body'] = "body/form_ticket";
+		$data['body'] = "body/form_ticket";
 
-        // $id_dept = trim($this->session->userdata('id_dept'));
-        // //notification 
-
-        // $sql_listticket = "SELECT COUNT(id_ticket) AS jml_list_ticket FROM ticket WHERE status = 2";
-        // $row_listticket = $this->db->query($sql_listticket)->row();
-
-        // $data['notif_list_ticket'] = $row_listticket->jml_list_ticket;
-
-        // $sql_approvalticket = "SELECT COUNT(A.id_ticket) AS jml_approval_ticket FROM ticket A 
-        // LEFT JOIN sub_kategori B ON B.id_sub_kategori = A.id_sub_kategori 
-        // LEFT JOIN kategori C ON C.id_kategori = B.id_kategori
-        // LEFT JOIN karyawan D ON D.nik = A.reported 
-        
-		// lEFT JOIN bagian_departemen E ON E.id_bagian_dept WHERE E.id_dept = $id_dept AND status = 1";
-		
-		// $row_approvalticket = $this->db->query($sql_approvalticket)->row();
-
-        // $data['notif_approval'] = $row_approvalticket->jml_approval_ticket;
-
-        // $sql_assignmentticket = "SELECT COUNT(id_ticket) AS jml_assignment_ticket FROM ticket WHERE status = 3 AND id_teknisi='$id_user'";
-        // $row_assignmentticket = $this->db->query($sql_assignmentticket)->row();
-
-        // $data['notif_assignment'] = $row_assignmentticket->jml_assignment_ticket;
-
-        // //end notification
-        
-        // $id_user = trim($this->session->userdata('id_user'));
-
-        // $cari_data = "select A.nik, A.nama, C.nama_dept, B.nama_bagian_dept FROM karyawan A
-        // 							   LEFT JOIN bagian_departemen B ON B.id_bagian_dept = A.id_bagian_dept
-        // 							   LEFT JOIN departemen C ON C.id_dept = B.id_dept
-        // 							   WHERE A.nik = '$id_user'";
-
-        // $row = $this->db->query($cari_data)->row();
-
-        // $data['id_ticket'] = "";
-
-        // $data['id_user'] = $id_user;
-        // $data['nama'] = $row->nama;
-        // $data['departemen'] = $row->nama_dept;
-		// $data['bagian_departemen'] = $row->nama_bagian_dept;
-		$data['title'] = $this->session->userdata('title1');
+		$data['name'] = $this->session->userdata('employe_name');
+		$data['id_user'] = $this->session->userdata('id_user');
+		$data['position'] = $this->session->userdata('position');
 		$data['division'] = $this->session->userdata('division');
-		$data['name'] = trim($this->session->userdata('nama'));		
-		$data['id_user']= trim($this->session->userdata('id_user'));
-		$data['dd_kategori'] = $this->model_app->dropdown_kategori();
-		$data['id_kategori'] = "";
-
-		// $data['dd_kondisi'] = $this->model_app->dropdown_kondisi();
-		// $data['id_kondisi'] = "";
-
+		$data['dd_division'] = $this->model_app->dropdown_kategori();
+		$data['id_division'] = "";
 		$data['problem_summary'] = "";
 		$data['problem_detail'] = "";
-		// //$data['file']= "";
 
-		// $data['status'] = "";
-		// $data['progress'] = "";
+		$data['url'] = "ticket/save";
 
-		// $data['url'] = "ticket/save";
-
-		// $data['flag'] = "add";
+		$data['flag'] = "add";
     
         $this->load->view('template', $data);
 
@@ -99,20 +50,6 @@ function __construct(){
 
  function save()
  {
-	// $config['upload_path'] = './uploads/';
-	// $config['allowed_types'] = 'gif|jpg|png';
-	// $this->load->library('upload', $config);
-    //     if (!$this->upload->do_upload('gambar')) {
-    //         $error = $this->upload->display_errors();
-    //         // menampilkan pesan error
-    //         print_r($error);
-    //     } else {
-    //         $result = $this->upload->data();
-    //         echo "<pre>";
-    //         print_r($result);
-    //         echo "</pre>";
-    //     }
-
  	$getkodeticket = $this->model_app->getkodeticket();
 	
 	$ticket = $getkodeticket;
@@ -120,35 +57,22 @@ function __construct(){
  	$id_user = strtoupper(trim($this->input->post('id_user')));
 	date_default_timezone_set("Asia/Jakarta");
  	$tanggal = $time = date("Y-m-d H:i:s");
-	//$tanggal1= explode(" ",$tanggal1);
 
- 	$id_sub_kategori = strtoupper(trim($this->input->post('id_sub_kategori')));
+	$id_division = strtoupper(trim($this->input->post('id_division')));
 	$problem_summary = strtoupper(trim($this->input->post('problem_summary')));
-	//$file = $this->input->post('file'); 
  	$problem_detail = strtoupper(trim($this->input->post('problem_detail')));
- 	$id_teknisi = strtoupper(trim($this->input->post('id_teknisi')));
  	
- 	$data['id_ticket'] = $ticket;
- 	$data['reported'] = $id_user;
- 	$data['tanggal'] = $tanggal;
- 	$data['id_sub_kategori'] = $id_sub_kategori;
-	$data['problem_summary'] = $problem_summary;
-	$data['file'] = $file;
- 	$data['problem_detail'] = $problem_detail;
- 	$data['id_teknisi'] = $id_teknisi;
- 	$data['status'] = 4	;
- 	$data['progress'] = 0;
-
- 	$tracking['id_ticket'] = $ticket;
- 	$tracking['tanggal'] = $tanggal;
- 	$tracking['status'] = "Created Ticket";
- 	$tracking['deskripsi'] = $problem_detail;
- 	$tracking['id_user'] = $id_user;
+	$data['id_ticket'] = $ticket;
+	$data['title'] = $problem_summary;
+	$data['id_division'] = $id_division;
+ 	$data['create_by'] = $id_user;
+ 	$data['create_date'] = $tanggal;
+ 	$data['description'] = $problem_detail;
+ 	$data['status'] = 1	;
 
  	$this->db->trans_start();
 
- 	$this->db->insert('ticket', $data);
- 	$this->db->insert('tracking', $tracking);
+ 	$this->db->insert('hd_ticket', $data);
 
  	$this->db->trans_complete();
 

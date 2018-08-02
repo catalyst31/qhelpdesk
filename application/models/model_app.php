@@ -8,7 +8,7 @@ class Model_app extends CI_Model{
     //  ================= AUTOMATIC CODE ==================
     public function getkodeticket()
     {
-        $query = $this->db->query("select max(id_ticket) as max_code FROM ticket");
+        $query = $this->db->query("select max(id_ticket) as max_code FROM hd_ticket");
 
         $row = $query->row_array();
 
