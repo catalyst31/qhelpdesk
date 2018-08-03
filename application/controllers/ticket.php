@@ -101,10 +101,18 @@ function __construct(){
 
 	// }
 
+	if($id_division==221)
+    {
+        $data['id_division'] = 200;
+    }
+    elseif($id_division==230)
+    {
+        $data['id_division'] = 200;
+    }
+
 
 	$data['id_ticket'] = $ticket;
 	$data['title'] = $problem_summary;
-	$data['id_division'] = $id_division;
  	$data['create_by'] = $id_user;
  	$data['create_date'] = $tanggal;
  	$data['description'] = $problem_detail;

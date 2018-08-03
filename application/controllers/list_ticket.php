@@ -27,7 +27,7 @@ function __construct(){
                                     FROM qu_m_employ A 
                                     LEFT JOIN qu_m_employ_position B ON B.id = A.id_position
                                     LEFT JOIN qu_m_employ_division C ON C.id = B.id_division   
-                                    WHERE A.id='201801848'");
+                                    WHERE A.id='201400534'");
 
         if($akses->num_rows() == 1)
         {
@@ -237,7 +237,7 @@ function __construct(){
         $data['tanggal'] = $row->date;
         $data['description'] = $row->description;
         $data['files'] = $row->file;
-        
+        $data['url'] = "list_ticket/update_progress_teknisi";
         // $data['nama_kategori'] = $row->nama_kategori;
         // $data['reported'] = $row->nama;
         // $data['progress'] = $row->progress;
@@ -253,6 +253,39 @@ function __construct(){
         
         $this->load->view('template', $data);
 
+ }
+ 
+ function update_progress_teknisi(){
+    $id_user = trim($this->session->userdata('id_user'));
+    $ticket = strtoupper(trim($this->input->post('id_ticket')));
+    $status = strtoupper(trim($this->input->post('id_status')));
+    $comment = trim($this->input->post('deskripsi_progress'));
+	date_default_timezone_set("Asia/Jakarta");
+    $tanggal = $time = date("Y-m-d H:i:s");
+    
+    $data['status'] = $status;
+    $tracking['id_ticket'] = $ticket;
+    $tracking['create_by'] = $id_user;
+    $tracking['create_date'] = $tanggal;
+    $tracking['comment'] = $comment;
+
+    $this->db->trans_start();
+
+    $this->db->where('id_ticket', $ticket);
+    $this->db->update('hd_ticket',$data);
+
+    $this->db->insert('hd_ticket_comment',$tracking);
+    $this->db->trans_complete();
+
+    if ($this->db->trans_status() === FALSE)
+            {
+               
+                redirect('/'); 
+            } else 
+            {
+                
+                redirect('/'); 
+            }
  }
 
  public function pdflistticket()

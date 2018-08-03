@@ -29,7 +29,6 @@
 				<div class="col-md-12">
 					<form method="post" action="<?php echo base_url();?><?php echo $url;?>" enctype="multipart/form-data">
 
-						<input type="hidden" class="form-control" name="id_ticket" value="kosong">
 						<input type="hidden" class="form-control" name="id_user" value="<?php echo $id_user;?>">
 						<!-- <input type="hidden" class="form-control" name="id_ticket" value="<?php echo $id_ticket;?>">
 					<input type="hidden" class="form-control" name="id_user" value="<?php echo $id_user;?>"> -->

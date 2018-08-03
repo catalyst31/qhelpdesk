@@ -239,11 +239,11 @@ function __construct(){
     if ($this->db->trans_status() === FALSE)
             {
                
-                redirect('myassignment/myassignment_list');   
+                redirect('list_ticket/view_progress_teknisi/'<?php echo $ticket;?>);   
             } else 
             {
                 
-                redirect('myassignment/myassignment_list');  
+                redirect('list_ticket/view_progress_teknisi/'<?php echo $ticket;?>);  
             }
 
 
