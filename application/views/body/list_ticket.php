@@ -19,10 +19,10 @@
 						    <thead>
 						    <tr>
 						        <th data-field="no" data-sortable="true" width="10px"> No</th>
-						        <th data-field="idd3" data-sortable="true">Problem No.</th>
+						        <th data-field="idd3" data-sortable="true">Ticket No.</th>
 								<th data-field="iddd" data-sortable="true">Date</th>
 						        <th data-field="iddds" data-sortable="true">Reported</th>
-						        <th data-field="idddXs" data-sortable="true">Dept</th>
+						        <th data-field="idddXs" data-sortable="true">To Division</th>
 						        <th data-field="iddddd" data-sortable="true">Subject</th>
 						        <th data-field="idddddd" data-sortable="true">Status</th>
 						    </tr>

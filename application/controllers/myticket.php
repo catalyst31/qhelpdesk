@@ -43,10 +43,10 @@ function __construct(){
 
         // //end notification
 
-        // $id = trim($this->session->userdata('id_user'));
+        $id = trim($this->session->userdata('id_user'));
 
-        // $datamyticket = $this->model_app->datamyticket($id);
-	    // $data['datamyticket'] = $datamyticket;
+        $datamyticket = $this->model_app->datamyticket($id);
+	    $data['datamyticket'] = $datamyticket;
         
         $this->load->view('template', $data);
  }

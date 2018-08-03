@@ -19,13 +19,15 @@
 <div class="list-group">
 <a href="#" class="list-group-item active">
 <!-- <?php echo $id_ticket;?> -->
-<?php echo "Tiket No";?>
+No. Ticket :&nbsp;<?php echo $id_ticket;?>
 </a>
 <!-- TODO : Change to $ variable -->
-<a href="#" class="list-group-item"><span class="glyphicon glyphicon-calendar"></span> &nbsp;<?php echo "tanggal";?></a>
-<a href="#" class="list-group-item"><span class="glyphicon glyphicon-briefcase"></span> &nbsp;<?php echo "nama_kategori";?></a>
-<a href="#" class="list-group-item"><span class="glyphicon glyphicon-briefcase"></span> &nbsp;<?php echo "nama_sub_kategori";?></a>
-<a href="#" class="list-group-item"><span class="glyphicon glyphicon-user"></span> &nbsp;<?php echo "reported";?></a>
+<a href="#" class="list-group-item"><span class="glyphicon glyphicon-calendar"></span> &nbsp;<?php echo $create_by;?></a>
+<a href="#" class="list-group-item"><span class="glyphicon glyphicon-calendar"></span> &nbsp;<?php echo $tanggal;?></a>
+<a href="#" class="list-group-item"><span class="glyphicon glyphicon-briefcase"></span> &nbsp;<?php echo $subject;?></a>
+<a href="#" class="list-group-item"><span class="glyphicon glyphicon-briefcase"></span> &nbsp;<?php echo $description;?></a>
+
+<a href="<?php echo base_url('upload/'.$files); ?>" class="list-group-item"><span class="glyphicon glyphicon-user"></span> &nbsp;<?php echo $files;?></a>
 </div>
 
 
@@ -84,18 +86,16 @@ PROCESS DATE: <?php echo $tanggal_proses;?>
   <tr>
   	<th>NO</th>
   	<th>DATE</th>
-  	<th>STATUS</th>
   	<th>DESCRIPTION</th>
   	<th>BY</th>
   </tr>
 
-  <!-- <?php $no = 0; foreach($data_trackingticket as $row) : $no++;?> -->
+  <?php $no = 0; foreach($data_trackingticket as $row) : $no++;?>
    <tr>
    	<td><?php echo $no;?></td>
-  	<td><?php echo $row->tanggal;?></td>
-  	<td><?php echo $row->status;?></td>
-  	<td><?php echo $row->deskripsi;?></td>
-  	<td><?php echo $row->nama;?></td>
+  	<td><?php echo $row->date;?></td>
+  	<td><?php echo $row->comment;?></td>
+  	<td><?php echo $row->create_by;?></td>
   </tr>
 <?php endforeach;?>
 </table>

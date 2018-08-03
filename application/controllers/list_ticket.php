@@ -27,7 +27,7 @@ function __construct(){
                                     FROM qu_m_employ A 
                                     LEFT JOIN qu_m_employ_position B ON B.id = A.id_position
                                     LEFT JOIN qu_m_employ_division C ON C.id = B.id_division   
-                                    WHERE A.id='201801849'");
+                                    WHERE A.id='201801848'");
 
         if($akses->num_rows() == 1)
         {
@@ -180,7 +180,7 @@ function __construct(){
         // //notification 
 
         // $sql_listticket = "SELECT COUNT(id_ticket) AS jml_list_ticket FROM ticket WHERE status = 2";
-        // $row_listticket = $this->db->query($sql_listticket)->row();
+        //$row_listticket = $this->db->query($sql_listticket)->row();
 
         // $data['notif_list_ticket'] = $row_listticket->jml_list_ticket;
 
@@ -209,17 +209,35 @@ function __construct(){
         //         LEFT JOIN karyawan F ON F.nik = E.nik 
         //         WHERE A.id_ticket = '$id'";
 
-        // $row = $this->db->query($sql)->row();
+        $sql = "SELECT A.title AS 'subject',
+                       A.create_date AS 'date',
+                       A.description AS 'description',
+                       A.status AS 'status',
+                       B.comment AS 'comment',
+                       C.file AS 'file',
+                       D.name AS 'reported'
+                FROM hd_ticket A
+                LEFT JOIN hd_ticket_comment B ON B.id_ticket = A.id_ticket
+                LEFT JOIN hd_ticket_files C ON C.id_ticket = A.id_ticket
+                LEFT JOIN qu_m_employ D ON D.id = A.create_by
+                WHERE A.id_ticket = '$id'
+
+               ";
+
+        $row = $this->db->query($sql)->row();
 
         // $id_kategori = $row->id_kategori;
 
         // $data['dd_teknisi'] = $this->model_app->dropdown_teknisi($id_kategori);
         // $data['id_teknisi'] = "";
             
-        // $data['id_ticket'] = $id;  
-        // $data['nama_teknisi'] = $row->nama_teknisi;       
-        // $data['tanggal'] = $row->tanggal;
-        // $data['nama_sub_kategori'] = $row->nama_sub_kategori;
+        $data['id_ticket'] = $id;
+        $data['create_by'] = $row->reported;  
+        $data['subject'] = $row->subject;       
+        $data['tanggal'] = $row->date;
+        $data['description'] = $row->description;
+        $data['files'] = $row->file;
+        
         // $data['nama_kategori'] = $row->nama_kategori;
         // $data['reported'] = $row->nama;
         // $data['progress'] = $row->progress;
@@ -228,8 +246,8 @@ function __construct(){
         // $data['tanggal_solved'] = $row->tanggal_solved;
 
         // //TRACKING TICKET
-        // $data_trackingticket = $this->model_app->data_trackingticket($id);
-        // $data['data_trackingticket'] = $data_trackingticket;
+        $data_trackingticket = $this->model_app->data_trackingticket($id);
+        $data['data_trackingticket'] = $data_trackingticket;
 
         
         $this->load->view('template', $data);

@@ -118,10 +118,22 @@ class Model_app extends CI_Model{
     public function data_trackingticket($id)
     {
 
-        $query = $this->db->query("SELECT A.tanggal, A.status, A.deskripsi, B.nama
-                                   FROM tracking A 
-                                   LEFT JOIN karyawan B ON B.nik = A.id_user
-                                   WHERE A.id_ticket ='$id'");
+        // $query = $this->db->query("SELECT A.tanggal, A.status, A.deskripsi, B.nama
+        //                            FROM tracking A 
+        //                            LEFT JOIN karyawan B ON B.nik = A.id_user
+        //                            WHERE A.id_ticket ='$id'");
+
+        $query = $this->db->query("SELECT 
+                                            A.id_ticket AS 'idticket',
+                                            C.name AS 'create_by',
+                                            A.create_date AS 'date',
+                                            A.comment AS 'comment'
+                                    FROM hd_ticket_comment A
+                                    LEFT JOIN hd_ticket B ON B.id_ticket = A.id_ticket
+                                    LEFT JOIN qu_m_employ C ON C.id = A.create_by
+                                    WHERE A.id_ticket = '$id'
+        
+        ");
         return $query->result();
 
     }
@@ -140,12 +152,24 @@ class Model_app extends CI_Model{
 
     public function datamyticket($id)
     {
-        $query = $this->db->query("SELECT A.progress, A.tanggal_proses, A.tanggal_solved, A.id_teknisi, D.feedback, A.status, A.id_ticket, A.tanggal, B.nama_sub_kategori, C.nama_kategori
-                                   FROM ticket A 
-                                   LEFT JOIN sub_kategori B ON B.id_sub_kategori = A.id_sub_kategori
-                                   LEFT JOIN kategori C ON C.id_kategori = B.id_kategori 
-                                   LEFT JOIN history_feedback D ON D.id_ticket = A.id_ticket
-                                   WHERE A.reported = '$id' ");
+        // $query = $this->db->query("SELECT A.progress, A.tanggal_proses, A.tanggal_solved, A.id_teknisi, D.feedback, A.status, A.id_ticket, A.tanggal, B.nama_sub_kategori, C.nama_kategori
+        //                            FROM ticket A 
+        //                            LEFT JOIN sub_kategori B ON B.id_sub_kategori = A.id_sub_kategori
+        //                            LEFT JOIN kategori C ON C.id_kategori = B.id_kategori 
+        //                            LEFT JOIN history_feedback D ON D.id_ticket = A.id_ticket
+        //                            WHERE A.reported = '$id' ");
+
+        $query = $this->db->query("SELECT A.id_ticket, 
+                                          A.title, 
+                                          A.create_by, 
+                                          A.create_date,
+                                          A.status,
+                                          B.name AS 'division_name',
+                                          C.name AS 'employe_name' 
+                                   FROM hd_ticket A 
+                                   LEFT JOIN qu_m_employ_division B ON B.id = A.id_division
+                                   LEFT JOIN qu_m_employ C ON C.id = A.create_by   
+                                   WHERE A.status IN (1) AND A.create_by = '$id' ");
     return $query->result();
     }
 

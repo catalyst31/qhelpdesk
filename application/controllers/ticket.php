@@ -73,7 +73,6 @@ function __construct(){
 	$config["allowed_types"]	= "*"; // all types
 	$config["max_size"] 		= 10240; // 10MB
 
-	$filename = $config["file_name"] = "";
 
 	$this->load->library("upload", $config);
 	// important to multiple upload
@@ -117,11 +116,11 @@ function __construct(){
 	$tracking['create_by'] = $id_user;
 	
 	$upload['id_ticket'] = $ticket;
-	$upload['file'] = $filename;
+	$upload['file'] = $filename1;
 
 
  	$this->db->trans_start();
-if($filename== ""){
+if($filename1== ""){
 	$this->db->insert('hd_ticket', $data);
 	$this->db->insert('hd_ticket_comment', $tracking);
 }else{
