@@ -244,7 +244,8 @@ function __construct(){
         // $data['tanggal_proses'] = $row->tanggal_proses;
         // $data['tanggal'] = $row->tanggal;
         // $data['tanggal_solved'] = $row->tanggal_solved;
-
+        $data['dd_status'] = $this->model_app->dropdown_status();
+		$data['id_status'] = "";
         // //TRACKING TICKET
         $data_trackingticket = $this->model_app->data_trackingticket($id);
         $data['data_trackingticket'] = $data_trackingticket;

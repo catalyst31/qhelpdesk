@@ -110,7 +110,7 @@ class Model_app extends CI_Model{
                                    FROM hd_ticket A 
                                    LEFT JOIN qu_m_employ_division B ON B.id = A.id_division
                                    LEFT JOIN qu_m_employ C ON C.id = A.create_by   
-                                   WHERE A.status IN (1) AND A.id_division = '$id_division' ");
+                                   WHERE A.status IN (1,2) AND A.id_division = '$id_division' ");
         return $query->result();
 
     }
@@ -169,7 +169,7 @@ class Model_app extends CI_Model{
                                    FROM hd_ticket A 
                                    LEFT JOIN qu_m_employ_division B ON B.id = A.id_division
                                    LEFT JOIN qu_m_employ C ON C.id = A.create_by   
-                                   WHERE A.status IN (1) AND A.create_by = '$id' ");
+                                   WHERE A.status IN (1,2,3) AND A.create_by = '$id' ");
     return $query->result();
     }
 
@@ -384,11 +384,12 @@ class Model_app extends CI_Model{
     }
 
 
-    public function dropdown_jk()
+    public function dropdown_status()
     {
         $value[''] = '--PILIH--';            
-        $value['LAKI-LAKI'] = 'LAKI-LAKI';
-        $value['PEREMPUAN'] = 'PEREMPUAN';           
+        $value['1'] = 'OPEN';
+        $value['2'] = 'PENDING';
+        $value['3'] = 'CLOSED';           
             
             return $value;
     }

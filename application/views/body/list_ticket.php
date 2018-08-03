@@ -65,7 +65,7 @@
 								<!-- Start Status-->
 								<td data-field="id"><?php 
 						        if($row->status==1) { echo "OPEN";}
-						        else if($row->status==3) { echo "WAITING APPROVAL TECHNICIAN";}
+						        else if($row->status==2) { echo "WAITING APPROVAL TECHNICIAN";}
 						        else if($row->status==4) { echo "PROCESS TECHNICIAN";}
 						        else if($row->status==5) { echo "PENDING TECHNICIAN";}
 						        else if($row->status==6) { echo "SOLVED";}

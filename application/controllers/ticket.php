@@ -120,7 +120,7 @@ function __construct(){
 
 
  	$this->db->trans_start();
-if($filename1== ""){
+if($filename1== NULL){
 	$this->db->insert('hd_ticket', $data);
 	$this->db->insert('hd_ticket_comment', $tracking);
 }else{
