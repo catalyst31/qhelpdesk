@@ -88,17 +88,29 @@ class Model_app extends CI_Model{
     return $query->result();
     }
 
-    public function datalist_ticket()
+    public function datalist_ticket($id_division)
     {
 
-        $query = $this->db->query("SELECT D.nama, F.nama_dept, A.status, A.id_ticket, A.tanggal, B.nama_sub_kategori, C.nama_kategori
-                                   FROM ticket A 
-                                   LEFT JOIN sub_kategori B ON B.id_sub_kategori = A.id_sub_kategori
-                                   LEFT JOIN kategori C ON C.id_kategori = B.id_kategori
-                                   LEFT JOIN karyawan D ON D.nik = A.reported
-                                   LEFT JOIN bagian_departemen E ON E.id_bagian_dept = D.id_bagian_dept
-                                   LEFT JOIN departemen F ON F.id_dept = E.id_dept
-                                   WHERE A.status IN (2,3,4,5,6)");
+        // $query = $this->db->query("SELECT D.nama, F.nama_dept, A.status, A.id_ticket, A.tanggal, B.nama_sub_kategori, C.nama_kategori
+        //                            FROM ticket A 
+        //                            LEFT JOIN sub_kategori B ON B.id_sub_kategori = A.id_sub_kategori
+        //                            LEFT JOIN kategori C ON C.id_kategori = B.id_kategori
+        //                            LEFT JOIN karyawan D ON D.nik = A.reported
+        //                            LEFT JOIN bagian_departemen E ON E.id_bagian_dept = D.id_bagian_dept
+        //                            LEFT JOIN departemen F ON F.id_dept = E.id_dept
+        //                            WHERE A.status IN (2,3,4,5,6)");
+
+        $query = $this->db->query("SELECT A.id_ticket, 
+                                          A.title, 
+                                          A.create_by, 
+                                          A.create_date,
+                                          A.status,
+                                          B.name AS 'division_name',
+                                          C.name AS 'employe_name' 
+                                   FROM hd_ticket A 
+                                   LEFT JOIN qu_m_employ_division B ON B.id = A.id_division
+                                   LEFT JOIN qu_m_employ C ON C.id = A.create_by   
+                                   WHERE A.status IN (1) AND A.id_division = '$id_division' ");
         return $query->result();
 
     }

@@ -28,7 +28,7 @@
 						    </tr>
                             </thead>
                             <tbody>
-                           <!-- <?php $no = 0; foreach($datalist_ticket as $row) : $no++;?> -->
+                           <?php $no = 0; foreach($datalist_ticket as $row) : $no++;?>
 						     <tr>
 							 <!-- Start No -->
 						        <td data-field="no" width="10px"><?php echo $no;?></td>
@@ -47,28 +47,31 @@
 								<!-- End Ticket Number -->
 
 								<!-- Start Date-->
-								<td data-field="id"><?php echo $row->tanggal;?></td>
+								<td data-field="id"><?php echo $row->create_date;?></td>
 								<!-- End Date-->
 
 								<!-- Start Reported By-->
-								<td data-field="iddsd"><?php echo $row->nama;?></td>
+								<td data-field="iddsd"><?php echo $row->employe_name;?></td>
 								<!-- End Reported By-->
 
 								<!-- Start Dept-->
-								<td data-field="iddsd"><?php echo $row->nama_dept;?></td>
+								<td data-field="iddsd"><?php echo $row->division_name;?></td>
 								<!-- End Dept-->
 
 								<!-- Start Subject-->
-								<td data-field="id"><?php echo $row->nama_kategori;?></td>
+								<td data-field="id"><?php echo $row->title;?></td>
 								<!-- End Subject-->
 
 								<!-- Start Status-->
-								<td data-field="id"><?php echo $row->nama_sub_kategori;?></td>
+								<td data-field="id"><?php 
+						        if($row->status==1) { echo "OPEN";}
+						        else if($row->status==3) { echo "WAITING APPROVAL TECHNICIAN";}
+						        else if($row->status==4) { echo "PROCESS TECHNICIAN";}
+						        else if($row->status==5) { echo "PENDING TECHNICIAN";}
+						        else if($row->status==6) { echo "SOLVED";}
+
+						        ?></td>
 								<!-- End Status-->
-						        
-						        <td data-field="id">
-						        
-						        </td>
 						    </tr>
 						    <?php endforeach;?>
 						    </tbody>

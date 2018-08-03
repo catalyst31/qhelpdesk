@@ -19,15 +19,15 @@ function __construct(){
         $data['navbar'] = "navbar/navbar";
         $data['sidebar'] = "sidebar/sidebar";
         $data['body'] = "body/list_ticket";
-
         $akses = $this->db->query("SELECT A.id AS 'nik',
                                           A.name AS 'account_name', 
                                           B.name AS 'name_position', 
-                                          C.name AS 'name_division' 
+                                          C.name AS 'name_division', 
+                                          C.id AS 'id_division'
                                     FROM qu_m_employ A 
                                     LEFT JOIN qu_m_employ_position B ON B.id = A.id_position
                                     LEFT JOIN qu_m_employ_division C ON C.id = B.id_division   
-                                    WHERE A.id='201801848'");
+                                    WHERE A.id='201801849'");
 
         if($akses->num_rows() == 1)
         {
@@ -37,6 +37,7 @@ function __construct(){
     
         $session['id_user'] = $account_data['nik'];
         $session['employe_name'] = $account_data['account_name'];
+        $session['id_division'] = $account_data['id_division'];
         $session['division'] = $account_data['name_division'];
         $session['position'] = $account_data['name_position'];
         $this->session->set_userdata($session);
@@ -51,6 +52,9 @@ function __construct(){
                     </div>");
         redirect('login');
         }
+        $id_division = $this->session->userdata('id_division');
+        $datalist_ticket = $this->model_app->datalist_ticket($id_division);
+        $data['datalist_ticket'] = $datalist_ticket;
         $this->load->view('template', $data);
  }
 
