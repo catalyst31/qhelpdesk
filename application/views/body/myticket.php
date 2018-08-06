@@ -36,9 +36,13 @@
 						        <td data-field="id"><?php echo $row->division_name;?></td>
 						        <td data-field="id"><?php echo $row->title;?></td>
 								<td data-field="id"><?php 
-						        if($row->status==1) { echo "<span class='label label-info'>Open</span>";}
-						        else if($row->status==2) { echo "<span class='label label-warning'>Pending</span>";}
-						        else if($row->status==3) { echo "<span class='label label-success'>Closed</span>";}
+						       if($row->status==1 && $row->file==NULL) { echo "<span class='label label-info'>OPEN</span>";}
+							   else if($row->status==1 && $row->file==$row->file) { echo "<span class='label label-info'>OPEN</span>&nbsp;<span class='label label-success glyphicon glyphicon-paperclip'> </span>";}
+							   else if($row->status==2 && $row->file==NULL) { echo "<span class='label label-warning'>PENDING</span>";}
+							   else if($row->status==2 && $row->file==$row->file) { echo "<span class='label label-warning'>PENDING</span>&nbsp;<span class='label label-success glyphicon glyphicon-paperclip'> </span>";}
+							   else if($row->status==3 && $row->file==NULL) { echo "<span class='label label-danger'>CLOSED</span>";}
+							   else if($row->status==3 && $row->file==$row->file) { echo "<span class='label label-danger'>CLOSED</span>&nbsp;<span class='label label-success glyphicon glyphicon-paperclip'> </span>";}
+
 
 						        ?></td>
 						    </tr>

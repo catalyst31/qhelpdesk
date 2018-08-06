@@ -32,22 +32,22 @@
           <table>
           <tr>
           <td>No.Ticket&nbsp;</td>
-          <td>:&nbsp;<?php echo $id_ticket;?></td>
+          <td>:&nbsp;<span class="label label-default"><?php echo $id_ticket;?></span></td>
           </tr>
 
           <tr>
           <td>Status&nbsp;</td>
           <td>:&nbsp;<?php
-          						        if($status==1) { echo "<span class='label label-info'>Open</span>";}
-                              else if($status==2) { echo "<span class='label label-warning'>Pending</span>";}
-                              else if($status==3) { echo "<span class='label label-success'>Closed</span>";}
+          						        if($status==1) { echo "<span class='label label-info'>OPEN</span>";}
+                              else if($status==2) { echo "<span class='label label-warning'>PENDING</span>";}
+                              else if($status==3) { echo "<span class='label label-success'>CLOSED</span>";}
           ?></td>
           </tr>
           </table> 
           </a>
           <!-- TODO : Change to $ variable -->
           <a href="#" class="list-group-item">
-            <span class="glyphicon glyphicon-calendar"></span>&nbsp;
+            <span class="glyphicon glyphicon-user"></span>&nbsp;
             <?php echo $create_by;?>
           </a>
           <a href="#" class="list-group-item">
@@ -55,21 +55,26 @@
             <?php echo $tanggal;?>
           </a>
           <a href="#" class="list-group-item">
-            <span class="glyphicon glyphicon-briefcase"></span>&nbsp;
+            <span class="glyphicon glyphicon-info-sign"></span>&nbsp;
             <?php echo $subject;?>
           </a>
-          <a href="#" class="list-group-item">
-            <span class="glyphicon glyphicon-briefcase"></span> &nbsp;
+          <a href="#" class="list-group-item" style="text-align:justify;">
+            <span class="glyphicon glyphicon-align-left"></span> &nbsp;
             <?php echo $description;?>
           </a>
+          <!-- <a href="#" class="list-group-item">
+            <span class="glyphicon glyphicon-briefcase"></span> &nbsp;
+            <?php echo $files;?>
+          </a> -->
         </div>
 
         <?php if($files == NULL){
 
 }else{?>
-        <a href="<?php echo base_url('upload/'.$files); ?>">
-          <button type="submit" class="btn btn-success glyphicon glyphicon-download">&nbsp;
-            <?php echo $files ?>
+        <a href="<?php echo base_url()?>list_ticket/download_attachment/<?php echo $id_ticket?>">
+        
+          <button class="btn btn-success glyphicon glyphicon-download">
+          <span><?php echo $files ?></span>
           </button>
         </a>
         <?php }?>

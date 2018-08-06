@@ -62,16 +62,17 @@ function __construct(){
 	$id_division = strtoupper(trim($this->input->post('id_division')));
 	$problem_summary = strtoupper(trim($this->input->post('problem_summary')));
 	$problem_detail = strtoupper(trim($this->input->post('problem_detail')));
-
+	$datafile = trim($this->input->post('file1'));
 	//upload
 
 	$base_folder 	= FCPATH;
 	$upload_folder	= $base_folder . "upload/";
-	
+	$nameformat = "attachment_".$getkodeticket;
 	// upload file1
 	$config["upload_path"] 		= $upload_folder;
 	$config["allowed_types"]	= "*"; // all types
-	$config["max_size"] 		= 10240; // 10MB
+	$config["max_size"] 		= 10240; // 5MB
+	$config["file_name"]		= $nameformat;
 
 
 	$this->load->library("upload", $config);
@@ -81,6 +82,7 @@ function __construct(){
 	if(!$this->upload->do_upload("file1")){
 		$err = $this->upload->display_errors();
 		print_r($err);
+		$logerror = $this->upload->display_errors();
 	}else{
 		$filedata = $this->upload->data();
 		$filename1 = $filedata['file_name'];

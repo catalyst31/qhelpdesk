@@ -1,3 +1,20 @@
+<style>
+	
+	#file_error{color: #FF0000;}
+	</style>
+<script>
+	function validate() {
+		$("#file_error").html("");
+		$(".demoInputBox").css("border-color","#F0F0F0");
+		var file_size = $('#file1')[0].files[0].size;
+		if(file_size>5e+6) {
+			$("#file_error").html("Max. Files 5 MB");
+			$(".demoInputBox").css("border-color","#FF0000");
+			return false;
+		} 
+		return true;
+	}
+	</script>
 <div class="row">
 	<ol class="breadcrumb">
 		<li>
@@ -27,7 +44,7 @@
 			<div class="panel-body">
 
 				<div class="col-md-12">
-					<form method="post" action="<?php echo base_url();?><?php echo $url;?>" enctype="multipart/form-data">
+					<form method="post" action="<?php echo base_url();?><?php echo $url;?>" enctype="multipart/form-data" onSubmit="return validate();">
 
 						<input type="hidden" class="form-control" name="id_user" value="<?php echo $id_user;?>">
 						<!-- <input type="hidden" class="form-control" name="id_ticket" value="<?php echo $id_ticket;?>">
@@ -112,8 +129,9 @@
 
 									<div class="form-group">
 										<label>Attachment</label>
-										<input type="file" class="form-control" name="file1" placeholder="">
+										<div><input type="file" name="file1" id="file1" class="demoInputBox" /> <span id="file_error"></span></div>
 										<br>
+									   
 										<!-- <input type="file" class="form-control" name="file2" placeholder=""> -->
 									</div>
 

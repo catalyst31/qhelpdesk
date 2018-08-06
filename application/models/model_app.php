@@ -106,11 +106,13 @@ class Model_app extends CI_Model{
                                           A.create_date,
                                           A.status,
                                           B.name AS 'division_name',
-                                          C.name AS 'employe_name' 
+                                          C.name AS 'employe_name',
+                                          D.file 
                                    FROM hd_ticket A 
                                    LEFT JOIN qu_m_employ_division B ON B.id = A.id_division
-                                   LEFT JOIN qu_m_employ C ON C.id = A.create_by   
-                                   WHERE A.status IN (1,2) AND A.id_division = '$id_division' ");
+                                   LEFT JOIN qu_m_employ C ON C.id = A.create_by
+                                   LEFT JOIN hd_ticket_files D ON D.id_ticket = A.id_ticket   
+                                   WHERE A.status IN (1,2) AND A.id_division = '$id_division' ORDER BY A.id_ticket");
         return $query->result();
 
     }
@@ -165,11 +167,14 @@ class Model_app extends CI_Model{
                                           A.create_date,
                                           A.status,
                                           B.name AS 'division_name',
-                                          C.name AS 'employe_name' 
+                                          C.name AS 'employe_name',
+                                          D.file 
                                    FROM hd_ticket A 
                                    LEFT JOIN qu_m_employ_division B ON B.id = A.id_division
-                                   LEFT JOIN qu_m_employ C ON C.id = A.create_by   
-                                   WHERE A.status IN (1,2,3) AND A.create_by = '$id' ");
+                                   LEFT JOIN qu_m_employ C ON C.id = A.create_by 
+                                   LEFT JOIN hd_ticket_files D ON D.id_ticket = A.id_ticket  
+                                   WHERE A.status IN (1,2,3) AND A.create_by = '$id' ORDER BY A.id_ticket
+                                   ");
     return $query->result();
     }
 
@@ -394,15 +399,6 @@ class Model_app extends CI_Model{
             return $value;
     }
 
-    public function dropdown_level()
-    {
-        $value[''] = '--PILIH--';            
-        $value['ADMIN'] = 'ADMIN';
-        $value['TECHNICIAN'] = 'TECHNICIAN';
-        $value['USER'] = 'USER';           
-            
-            return $value;
-    }
 
 
 
