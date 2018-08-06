@@ -36,7 +36,7 @@
 								<!-- Start Ticket Number -->
 						        <td data-field="id">
 
-						        <a href="<?php echo base_url();?>list_ticket/view_progress_teknisi/<?php echo $row->id_ticket;?>"><?php echo $row->id_ticket;?></a>
+						        <a href="<?php echo base_url();?>list_ticket/detail_ticket/<?php echo $row->id_ticket;?>"><?php echo $row->id_ticket;?></a>
 						        
 						        </td>
 								<!-- End Ticket Number -->
@@ -59,9 +59,9 @@
 
 								<!-- Start Status-->
 								<td data-field="id"><?php 
-						        if($row->status==1) { echo "OPEN";}
-						        else if($row->status==2) { echo "PENDING";}
-						        else if($row->status==3) { echo "SOLVED";}
+						        if($row->status==1) { echo "<button type='submit' class='btn btn-sm btn-primary' disabled>OPEN</button>";}
+						        else if($row->status==2) { echo "<button type='submit' class='btn btn-sm btn-warning' disabled>PENDING</button>";}
+						        else if($row->status==3) { echo "<button type='submit' class='btn btn-sm btn-success' disabled>CLOSED</button>";}
 
 						        ?></td>
 								<!-- End Status-->

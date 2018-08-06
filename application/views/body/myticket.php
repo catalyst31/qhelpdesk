@@ -31,17 +31,14 @@
                            <?php $no = 0; foreach($datamyticket as $row) : $no++;?>
 						     <tr>
 						        <td data-field="no" width="10px"><?php echo $no;?></td>
-						        <td data-field="id"><a href="<?php echo base_url();?>myticket/myticket_detail/<?php echo $row->id_ticket;?>"><?php echo $row->id_ticket;?></a></td>
+						        <td data-field="id"><a href="<?php echo base_url();?>list_ticket/detail_ticket/<?php echo $row->id_ticket;?>"><?php echo $row->id_ticket;?></a></td>
 						        <td data-field="id"><?php echo $row->create_date;?></td>
 						        <td data-field="id"><?php echo $row->division_name;?></td>
 						        <td data-field="id"><?php echo $row->title;?></td>
-						        <td data-field="id"><?php if($row->status==1) { echo "OPEN";}
-						        else if($row->status==2) { echo "APPROVED";}
-						        else if($row->status==0) { echo "TICKET WAS REJECTED";}
-						        else if($row->status==3) { echo "WAITING APRROVAL TECHNICIAN";}
-						        else if($row->status==4) { echo "PROCESS TECHNICIAN";}
-						        else if($row->status==5) { echo "PENDING TECHNICIAN";}
-						        else if($row->status==6) { echo "SOLVED";}
+								<td data-field="id"><?php 
+								if($row->status==1) { echo "<button type='submit' class='btn btn-sm btn-primary' disabled>OPEN</button>";}
+						        else if($row->status==2) { echo "<button type='submit' class='btn btn-sm btn-warning' disabled>PENDING</button>";}
+						        else if($row->status==3) { echo "<button type='submit' class='btn btn-sm btn-success' disabled>CLOSED</button>";}
 						        ?></td>
 						    </tr>
 						    <?php endforeach;?>

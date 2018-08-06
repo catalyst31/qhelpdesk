@@ -126,7 +126,7 @@
 
 						<div class="col-md-6"></div>
 						<div class="col-md-6">
-							<button type="submit" class="btn btn-primary">Simpan</button>
+							<button type="submit" class="btn btn-success">Simpan</button>
 							<a href="<?php echo base_url();?>" class="btn btn-default">Batal</a>
 						</div>
 

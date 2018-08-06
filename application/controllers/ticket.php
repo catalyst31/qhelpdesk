@@ -108,7 +108,9 @@ function __construct(){
     elseif($id_division==230)
     {
         $data['id_division'] = 200;
-    }
+    }elseif($id_division == $id_division){
+		$data['id_division'] = $id_division;
+	}
 
 
 	$data['id_ticket'] = $ticket;

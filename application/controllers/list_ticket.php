@@ -27,7 +27,9 @@ function __construct(){
                                     FROM qu_m_employ A 
                                     LEFT JOIN qu_m_employ_position B ON B.id = A.id_position
                                     LEFT JOIN qu_m_employ_division C ON C.id = B.id_division   
-                                    WHERE A.id='201400534'");
+                                    WHERE A.id='201801848'");
+
+                                    //husni adam : 201400534
 
         if($akses->num_rows() == 1)
         {
@@ -166,7 +168,7 @@ function __construct(){
 
  }
 
- function view_progress_teknisi($id)
+ function detail_ticket($id)
  {
 
         $data['header'] = "header/header";
